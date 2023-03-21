@@ -12,10 +12,12 @@ const LayoutStyles = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100dvh;
+  overflow-x: hidden;
 `;
 
 const SiteContainerStyles = styled.div`
   max-width: 1000px;
+  width: 90%;
   margin: 4rem auto;
   padding: 5px;
   padding: clamp(5px, 1vw, 25px);
@@ -37,8 +39,8 @@ export default function Layout({ children }) {
     <Typography />
     <LayoutStyles>
     <Navbar />
-    <Sidebar />
     <SiteContainerStyles>
+    <Sidebar />
       <main id="main" className='main-content'>
         {children}
       </main>

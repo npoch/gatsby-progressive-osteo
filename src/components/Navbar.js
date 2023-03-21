@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const NavbarStyles = styled.nav`
   .nav-container {
@@ -13,7 +14,7 @@ const NavbarStyles = styled.nav`
     .logo {
       position: relative;
       left: 0;
-      max-width: 200px;
+      max-width: 100px;
     }
     .nav-right {
       position: relative;
@@ -64,10 +65,23 @@ const NavbarStyles = styled.nav`
 
 
 export default function Navbar(){
-  
+  const logo = useStaticQuery(graphql`
+    query MyQuery {
+  logo: sanityLogo(name: {eq: "progressive osteopathy logo"}) {
+    name
+    id
+    image {
+      asset {
+        gatsbyImageData(fit: FILLMAX, height: 300, layout: CONSTRAINED, placeholder: BLURRED)
+      }
+    }
+  }
+}
+  `);
+  // console.log({logo});
   return <NavbarStyles>
     <div className='nav-container'>
-      <p className='logo'>LOGO GOES HERE</p>
+      <GatsbyImage className='logo' alt={logo.logo.name} image={logo.logo.image.asset.gatsbyImageData} />
       <ul className='nav-right'>
         <li className='menu-item'>
           <Link to='/'>Home</Link>

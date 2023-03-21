@@ -13,7 +13,8 @@ module.exports = {
       "projectId": "msr25ovq",
       "dataset": "production"
     }
-  }, "gatsby-plugin-image", 
+  },
+  "gatsby-plugin-image",
   {
     resolve: "gatsby-plugin-sharp",
     options: {
@@ -28,12 +29,13 @@ module.exports = {
   }, 
   "gatsby-transformer-sharp", 
   // "gatsby-plugin-google-gtag", 
-  "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
-    },
-    __key: "images"
-  }]
+  // "gatsby-plugin-sitemap", {
+  //   resolve: 'gatsby-source-filesystem',
+  //   options: {
+  //     "name": "images",
+  //     "path": "./src/images/"
+  //   },
+  //   __key: "images"
+  // }
+]
 };
