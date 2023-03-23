@@ -65,19 +65,20 @@ const NavbarStyles = styled.nav`
 
 
 export default function Navbar(){
-  const logo = useStaticQuery(graphql`
-    query MyQuery {
-  logo: sanityLogo(name: {eq: "progressive osteopathy logo"}) {
-    name
-    id
-    image {
-      asset {
-        gatsbyImageData(fit: FILLMAX, height: 300, layout: CONSTRAINED, placeholder: BLURRED)
+  const logo = useStaticQuery(
+    graphql`
+      query {
+    logo: sanityLogo(name: {eq: "progressive osteopathy logo"}) {
+      name
+      id
+      image {
+        asset {
+          gatsbyImageData(fit: FILLMAX, height: 300, layout: CONSTRAINED, placeholder: BLURRED)
+        }
       }
     }
   }
-}
-  `);
+`);
   // console.log({logo});
   return <NavbarStyles>
     <div className='nav-container'>

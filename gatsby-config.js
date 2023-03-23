@@ -5,7 +5,16 @@ module.exports = {
   siteMetadata: {
     title: `Ontario Academy of Progressive Osteopathy`,
     description: `Discover the Future of Osteopathy in Canada.`,
-    siteUrl: `https://www.progressiveosteopathy.com`
+    siteUrl: `https://www.progressiveosteopathy.ca`,
+    location: {
+      address: `4773 Yonge St. Unit 4D`,
+      city: `Toronto`,
+      province: `Ontario`,
+      country: `Canada`,
+      postalCode: `M2N 0G2`,
+    },
+    phone: `+1(647)770-2967`,
+    email: `info@progressiveosteopathy.ca`,
   },
   plugins: [{
     resolve: 'gatsby-source-sanity',
