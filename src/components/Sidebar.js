@@ -107,7 +107,7 @@ export default function Sidebar() {
           <button className='menu-item link' onClick={slideToggle} data-dropdown-button>Programs</button>
           <ul className='dropdown-menu'>
             <li className='menu-item'>
-              <Link to="/our-curriculum" onClick={close}>Our Curriculum</Link>
+              <Link to="/osteopathic-education" onClick={close}>Our Curriculum</Link>
             </li>
             <li className='menu-item'>
               <Link to="/pathophysiology" onClick={close}>Pathophysiology</Link>

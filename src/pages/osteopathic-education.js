@@ -13,19 +13,19 @@ const serializers = {
   },
 }
 
-const ApplyStyles = styled.div``;
+const OurCurriculumStyles = styled.div``;
 
-export default function ApplyPage({data}){
+export default function OsteopathicEducationPage({data}){
   const content = data.page._rawContent;
-  return <ApplyStyles>
+  return <OurCurriculumStyles>
   <h1>{data.page.name}</h1>
   <BlockContent blocks={content} serializers={serializers} />
-  </ApplyStyles>
+  </OurCurriculumStyles>
 }
 
 export const query = graphql`
-  query ApplyPageQuery {
-    page: sanityPage(slug: {current: {eq: "apply"}}) {
+  query OurCurriculumQuery {
+    page: sanityPage(slug: {current: {eq: "osteopathic-education"}}) {
       id
       name
       slug {
