@@ -4,6 +4,7 @@ const Typography = createGlobalStyle`
   html {
     font-family: 'Open Sans', Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     color: var(--black);
+    line-height: 1.4em;
   }
   p, li {
     letter-spacing: 0.5px;

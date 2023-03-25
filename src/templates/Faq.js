@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from "styled-components";
 import BlockContent from '@sanity/block-content-to-react';
 
@@ -35,16 +34,6 @@ export const query = graphql`
       id
       title
       _rawContent(resolveReferences: {maxDepth: 10})
-      image {
-        asset {
-          gatsbyImageData(
-            placeholder: BLURRED
-            layout: FULL_WIDTH
-            fit: FILLMAX
-            width: 600
-          )
-        }
-      }
     }
   }
 `;
