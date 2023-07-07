@@ -16,7 +16,7 @@ const ClinicMonthStyles = styled.div`
 
 
 export default function ClinicMonth({data}){
-  // console.log("clinic month", data)
+  console.log("clinic month", data)
   function getMonthName(monthNumber) {
     const date = new Date();
     date.setMonth(monthNumber - 1);
@@ -30,6 +30,6 @@ export default function ClinicMonth({data}){
   }
   return <ClinicMonthStyles>
   <p><span>{getMonthName(data.month)}</span></p>
-  {data.datecouple.map((date, i) => <p key={`${date.dateString}-${i}`}>{datestampToLocalDate(date.start)} - {datestampToTime(date.end)}</p>)}
+  {/* {data.datecouple.map((date, i) => <p key={`${date.dateString}-${i}`}>{datestampToLocalDate(date.start)} - {datestampToTime(date.end)}</p>)} */}
   </ClinicMonthStyles>
 }

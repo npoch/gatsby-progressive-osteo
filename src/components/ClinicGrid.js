@@ -20,7 +20,7 @@ const ClinicGridStyles = styled.section`
 
 
 export default function ClinicGrid({data}){
-  console.log("clinic grid", data)
+  // console.log("clinic grid", data)
 
   return <ClinicGridStyles>
     <h3>{data.year}</h3>
