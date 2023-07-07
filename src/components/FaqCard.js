@@ -3,7 +3,8 @@ import React from "react";
 import styled from "styled-components";
 
 const FaqCardStyles = styled.div`
-  border: 2px silver solid;
+  border: 2px var(--grey) solid;
+  border-radius: 2rem;
   display: grid;
   align-items: center;
   h2 {
@@ -14,7 +15,7 @@ const FaqCardStyles = styled.div`
     text-decoration: none;
   }
   :hover {
-    background-color: silver;
+    background-color: var(--grey);
   }
 `;
 

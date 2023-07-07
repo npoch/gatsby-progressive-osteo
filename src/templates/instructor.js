@@ -3,6 +3,9 @@ import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import BlockContent from '@sanity/block-content-to-react';
+import Seo from '../components/Seo';
+import getYouTubeID from 'get-youtube-id';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 
 const serializers = {
   types: {
@@ -11,6 +14,11 @@ const serializers = {
         <code>{props.node.code}</code>
       </pre>
     ),
+    youtube: ({node}) => {
+      const { url } = node
+      const id = getYouTubeID(url)
+      return (<LiteYouTubeEmbed id={id} />)
+    },
   },
 }
 
@@ -27,11 +35,11 @@ const SingleInstructorStyles = styled.div`
 
 
 export default function SingleInstructor({data}){
-  console.log({data});
+  // console.log({data});
   const instructor = data.instructor;
-  return (
+  return <>
+    <Seo title={instructor.name} description={instructor.title} image={instructor.image.asset.url || ''}></Seo>
     <SingleInstructorStyles>
-      {/* <SEO title={instructor.name} image={instructor.image.asset.url} /> */}
     <h1>{instructor.name}</h1>
     <div className='single-instructor'>
       <div className='bio-pic'>
@@ -42,7 +50,8 @@ export default function SingleInstructor({data}){
       <BlockContent blocks={instructor._rawBio} serializers={serializers} />
     </div>
     </SingleInstructorStyles>
-  )
+  </>
+  
 }
 
 export const query = graphql`
@@ -62,6 +71,7 @@ export const query = graphql`
     # }
     image {
       asset {
+        url
         gatsbyImageData(
           placeholder: BLURRED
           layout: FULL_WIDTH

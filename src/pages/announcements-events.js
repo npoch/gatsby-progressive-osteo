@@ -3,9 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 import AnnounceCard from '../components/AnnounceCard';
 import EventCard from '../components/EventCard';
+import Seo from '../components/Seo';
 
 const AandEPageStyles = styled.div`
-  
+  display: grid;
+  grid-gap: 2rem;
 `;
 
 const SectionStyles = styled.section`
@@ -13,10 +15,11 @@ const SectionStyles = styled.section`
 `;
 
 export default function AnnouncementsEventsPage({data}){
-  console.log(data);
   const events = data.events.nodes;
   const announcements = data.announcements.nodes;
-  return <AandEPageStyles>
+  return <>
+  <Seo title={'Announcements and Events'} description={'Discover the latest news and events from the OAoPO.'}></Seo>
+  <AandEPageStyles>
     <SectionStyles>
     <h2>Announcements</h2>
     {announcements.map((announcement) => {
@@ -31,6 +34,7 @@ export default function AnnouncementsEventsPage({data}){
     </SectionStyles>
     
   </AandEPageStyles>
+  </>
 }
 
 export const query = graphql`

@@ -2,7 +2,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
-import { BsFacebook } from 'react-icons/bs';
+import { BsFacebook, BsInstagram, BsLinkedin } from 'react-icons/bs';
 
 const FooterStyles = styled.footer`
 background-color: var(--drk-blue);
@@ -32,6 +32,7 @@ padding-right: 3rem;
         align-self: center;
         font-weight: bold;
         padding-left: 12px;
+        color: white;
       }
       &.column-1 {
         align-items: flex-start;
@@ -60,6 +61,7 @@ padding-right: 3rem;
         grid-template-rows: 40px auto 40px auto;
         .social-link-list {
           display: grid;
+          max-width: 150px;
           grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
           align-items: center;
           justify-items: start;
@@ -212,6 +214,12 @@ export default function Footer(){
         <div className="social-link-list">
           <a className="fb-link social-link" href="https://www.facebook.com/ProgressiveOsteopathy/" rel="noopener">
             <BsFacebook />
+          </a>
+          <a className="ig-link social-link" href="https://www.instagram.com/progressiveosteopathy/" rel="noopener">
+            <BsInstagram />
+          </a>
+          <a className="in-link social-link" href="https://www.linkedin.com/company/progressiveosteopathy/" rel="noopener">
+            <BsLinkedin />
           </a>
         </div>
       </div>

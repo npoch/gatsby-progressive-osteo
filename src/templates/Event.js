@@ -1,8 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
+// import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import BlockContent from '@sanity/block-content-to-react';
+import Seo from '../components/Seo';
+import getYouTubeID from 'get-youtube-id';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 
 const serializers = {
   types: {
@@ -11,6 +14,11 @@ const serializers = {
         <code>{props.node.code}</code>
       </pre>
     ),
+    youtube: ({node}) => {
+      const { url } = node
+      const id = getYouTubeID(url)
+      return (<LiteYouTubeEmbed id={id} />)
+    },
   },
 }
 
@@ -21,22 +29,22 @@ const SingleEventStyles = styled.div`
 
 export default function SingleEvent({data}){
   const event = data.event;
-  return (
+  return <>
+    <Seo title={event.title}></Seo>
     <SingleEventStyles>
-      {/* <SEO title={instructor.name} image={instructor.image.asset.url} /> */}
-      {/* <h1>{event.title}</h1> */}
+      <h1>{event.title}</h1>
+      <BlockContent blocks={event._rawContent} serializers={serializers} />
     </SingleEventStyles>
-  )
+  </>
+  
 }
 
 export const query = graphql`
   query ($slug: String!) {
   event: sanityEvent(slug: {current: {eq: $slug}}) {
-    # id
-    title
-    slug {
-      current
-    }
+    id
+      title
+      _rawContent(resolveReferences: {maxDepth: 10})
   }
 }
 `;

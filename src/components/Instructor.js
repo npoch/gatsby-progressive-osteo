@@ -9,9 +9,20 @@ const InstructorStyles = styled.div`
   padding: 20px;
   display: grid;
   align-items: center;
-  h2 {
+  grid-template-rows: 60px auto 1fr 1fr 50px;
+  grid-gap: 10px;
+  i-name {
     margin-bottom: 10px;
-    
+    font-weight: bold;
+  }
+  p {
+    margin: 0;
+  }
+  .i-title {
+    font-weight: bold;
+  }
+  .i-creds {
+    color: darkgrey;
   }
   .img-placeholder {
     background-color: #F4F4F4;
@@ -25,10 +36,10 @@ const InstructorStyles = styled.div`
 export default function InstructorCard({instructor}) {
   console.log(instructor)
   return <InstructorStyles>
-  <h2>{instructor.name}</h2>
+  <h2 className='i-name'>{instructor.name}</h2>
   <GatsbyImage image={instructor.image.asset.gatsbyImageData} alt={instructor.name}/>
-  <p>{instructor.title}</p>
-  <p>{instructor.credentials}</p>
+  <p className='i-title'>{instructor.title}</p>
+  <p className='i-creds'>{instructor.credentials}</p>
   <Link to={`/instructor/${instructor.slug.current}`}>
     Read Details
   </Link>

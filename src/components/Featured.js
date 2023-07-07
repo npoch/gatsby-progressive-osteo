@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import FeatureCard from "../components/FeatureCard";
+// import { Link } from "gatsby";
 
 const FeaturedStyles = styled.div`
   padding: 10rem 0;
@@ -8,38 +9,51 @@ const FeaturedStyles = styled.div`
     text-align: center;
   }
   .featured-container {
-    display: grid;
-    grid-gap: 3.5em;
-    grid-template-columns: repeat(3, 1fr);
+    /* display: grid; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-flow: column; */
     padding: 2rem 0;
   }
 `;
 
-export default function Featured({ data }) {
+export default function Featured(props) {
+  const { announcements, clinicDates, events, images} = props;
   return (
     <FeaturedStyles>
       <section className="description">
-        <h2>Latest News and Important Announcements</h2>
-        <p>Exciting things happening in the world of Osteopathy</p>
+        <h2>Progressive education. Progressive practitioners.</h2>
+        <p>On the cutting edge of osteopathy.</p>
       </section>
       <div className="featured-container">
         <FeatureCard
-          title="Announcements"
-          src="https://upload.wikimedia.org/wikipedia/commons/e/e0/PlaceholderLC.png"
-          cta="Learn More"
+          title="Get the latest news and announcements"
+          block="announcements"
+          src={images.ia}
+          cta="Find out more"
           page="/announcements-events"
+          data={announcements}
         />
         <FeatureCard
-          title="Events"
-          src="https://upload.wikimedia.org/wikipedia/commons/e/e0/PlaceholderLC.png"
-          cta="Learn More"
+          title="Experience our unique curriculum for yourself"
+          block="events"
+          src={images.ie}
+          cta="Open house schedule"
           page="/announcements-events"
+          data={events}
         />
         <FeatureCard
-          title="Student Clinic"
-          src="https://upload.wikimedia.org/wikipedia/commons/e/e0/PlaceholderLC.png"
-          cta="Learn More"
+          title="Get treated by dedicated trainees at our student clinic"
+          block="clinic"
+          src={images.ic}
+          cta="Book now"
           page="/student-clinic"
+          data={clinicDates}
         />
       </div>
     </FeaturedStyles>

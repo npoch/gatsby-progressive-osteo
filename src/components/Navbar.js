@@ -20,7 +20,7 @@ const NavbarStyles = styled.nav`
       position: relative;
       right: 0;
       display: grid;
-      grid-template-columns: 80px 155px 120px;
+      grid-template-columns: repeat(4, max-content);//80px 70px 155px 120px;
       grid-gap: 20px;
       justify-content: end;
       align-items: center;
@@ -86,6 +86,9 @@ export default function Navbar(){
       <ul className='nav-right'>
         <li className='menu-item'>
           <Link to='/'>Home</Link>
+        </li>
+        <li className='menu-item'>
+          <Link to='/blog'>Blog</Link>
         </li>
         <li className='menu-item'>
           <Link to='/apply'>Apply Today!</Link>

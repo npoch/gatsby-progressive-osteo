@@ -16,6 +16,15 @@ const HeroStyles = styled.div`
     }
     .hero-col-span-2 {
       grid-column: span 2;
+      @media (max-width: 991px) {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+      }
+      .hero-title {
+        font-size: 2.5em;
+      }
     }
     .hero-col {
       .gatsby-image-wrapper {
@@ -52,8 +61,8 @@ export default function Hero({ logo }) {
     <HeroStyles>
       <div className="hero-container">
         <section className="hero-col-span-2">
-          <h1>Ontario Academy of Progressive Osteopathy</h1>
-          <p>Discover the future of Osteopathy in Canada</p>
+          <h1 className="hero-title">Discover the future of&nbsp;osteopathy</h1>
+          {/* <p> in Canada</p> */}
           <div className="button-container">
             <Link to="/apply" className="button">
               Apply Today

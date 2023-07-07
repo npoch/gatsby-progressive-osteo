@@ -123,9 +123,9 @@ export default function Sidebar() {
             <li className='menu-item'>
               <Link to="/student-clinic" onClick={close}>Information</Link>
             </li>
-            <li className='menu-item'>
+            {/* <li className='menu-item'>
               <Link to="/#" onClick={close}>Book Appointment</Link>
-            </li>
+            </li> */}
           </ul>
         </li>
         <li className='dropdown' data-dropdown>

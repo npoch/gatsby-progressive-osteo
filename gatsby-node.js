@@ -32,6 +32,38 @@ async function turnInstructorsIntoPages({ graphql, actions }) {
   });
 }
 
+async function turnPostsIntoPages({ graphql, actions }) {
+  // 1. Get template for Instructor
+  const postTemplate = path.resolve('./src/templates/Post.js');
+
+  // 2. Get all instructors from Sanity API
+  const { data } = await graphql(`
+    query {
+      posts: allSanityPost {
+        nodes {
+          title
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `);
+  // 3. Loop over each instructor and create a page for that person
+  // console.log(data.instructors.nodes);
+  data.posts.nodes.forEach((post) => {
+    console.log(`Making page for ${post.title}`);
+    actions.createPage({
+      // What is the URL for this new page??
+      path: `blog/${post.slug.current}`,
+      component: postTemplate,
+      context: {
+        slug: post.slug.current,
+      },
+    })
+  });
+}
+
 async function turnFaqsIntoPages({ graphql, actions }) {
   // 1. Get template
   const faqTemplate = path.resolve('./src/templates/Faq.js');
@@ -134,6 +166,9 @@ exports.createPages = async (params) => {
   await Promise.all([
     // Instructors
     turnInstructorsIntoPages(params),
+
+    // Posts
+    turnPostsIntoPages(params),
 
     // FAQs
     turnFaqsIntoPages(params),
