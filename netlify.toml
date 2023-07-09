@@ -2,7 +2,7 @@
   command = "npm run build"
 
 [context.production]
-  environment = { NODE_VERSION = "18.9.0", NETLIFY_BUILD_DEBUG = true }
+  environment = { NODE_VERSION = "18.9.0"}
 
 [[headers]]
   for = "/*"
