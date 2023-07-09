@@ -30,6 +30,6 @@ export default function ClinicMonth({data}){
   }
   return <ClinicMonthStyles>
   <p><span>{getMonthName(data.month)}</span></p>
-  {/* {data.datecouple.map((date, i) => <p key={`${date.dateString}-${i}`}>{datestampToLocalDate(date.start)} - {datestampToTime(date.end)}</p>)} */}
+  {data.datecouple.map((date, i) => <p key={`${date.dateString}-${i}`}>{datestampToLocalDate(date.start)} - {datestampToTime(date.end)}</p>)}
   </ClinicMonthStyles>
 }

@@ -33,15 +33,51 @@ const StudentClinicStyles = styled.div`
 export default function StudentClinicPage({data}){
   //(sort: [{year: ASC}, {month: {month: ASC}}, {month: {datecouple:{dateString: ASC}}}])
   const content = data.page._rawContent;
-  const dates = data.dates;
-  console.log(data);
+  const dates = [
+    {
+      "year": "2023",
+      "months": [
+        {
+          "month": "07",
+          "datecouple": [
+            {
+              "dateString": "2023-07-13",
+              "start": "2023-07-09T19:30:07.705Z",
+              "end": "2023-07-14T00:00:00.000Z"
+            },
+            {
+              "dateString": "2023-07-27",
+              "start": "2023-07-27T19:30:00.000Z",
+              "end": "2023-07-28T00:00:00.000Z"
+            }
+          ]
+        },
+        {
+          "month": "08",
+          "datecouple": [
+            {
+              "dateString": "2023-08-17",
+              "start": "2023-08-17T19:00:00.000Z",
+              "end": "2023-08-18T00:00:00.000Z"
+            },
+            {
+              "dateString": "2023-08-31",
+              "start": "2023-08-31T19:30:00.000Z",
+              "end": "2023-09-01T00:00:00.000Z"
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
   return <>
     <Seo title={'Student Clinic Information'} description={'Get treated by dedicated trainees at our student clinic.'}></Seo>
     <StudentClinicStyles>
     <h1>{data.page.name}</h1>
     <BlockContent blocks={content} serializers={serializers} />
     <h2>Student Clinic Calendar</h2>
-    {dates.nodes.map((year, i) => <ClinicGrid key={`${year}-${i}`} data={year} />)}
+    {dates.map((year, i) => <ClinicGrid key={`${year}-${i}`} data={year} />)}
     <iframe title="Student Clinic Appointment Request" src="https://docs.google.com/forms/d/18Td05OIlAykvN6QH6s0CzanPZymx4YyKE20T1m823cw/viewform?ts=63596245&amp;edit_requested=true#toolbar=0" className="iframe gform" frameBorder="0" ></iframe>
     </StudentClinicStyles>
   </>
@@ -73,18 +109,18 @@ export const query = graphql`
     }
     _rawContent(resolveReferences: {maxDepth: 10})
   }
-  dates: allSanityClinic {
-    nodes {
-      year
-      month {
-        month
-        datecouple {
-          dateString
-          start
-          end
-        }
-      }
-    }
-  }
+  # dates: allSanityClinic{
+  #   nodes {
+  #     year
+  #     months {
+  #       month
+  #       datecouple {
+  #         dateString
+  #         start
+  #         end
+  #       }
+  #     }
+  #   }
+  # }
 }
 `;

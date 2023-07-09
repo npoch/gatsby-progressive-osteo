@@ -25,7 +25,7 @@ export default function ClinicGrid({data}){
   return <ClinicGridStyles>
     <h3>{data.year}</h3>
     <div className="month-grid">
-      {data.month.map((singleMonth, i) => <ClinicMonth key={`${singleMonth}-${i}`} data={singleMonth} />)}
+      {data.months.map((singleMonth, i) => <ClinicMonth key={`${singleMonth}-${i}`} data={singleMonth} />)}
     </div>
   </ClinicGridStyles>
 }
