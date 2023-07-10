@@ -1,5 +1,4 @@
 import { graphql } from 'gatsby';
-import { graphql } from 'gatsby';
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import styled from 'styled-components';
@@ -22,7 +21,7 @@ const serializers = {
     },
   },
 }
-// adding note to allow for push
+
 const StudentClinicStyles = styled.div`
   .iframe.gform {
     width: 100%;
