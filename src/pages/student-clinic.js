@@ -22,7 +22,7 @@ const serializers = {
     },
   },
 }
-
+// adding note to allow for push
 const StudentClinicStyles = styled.div`
   .iframe.gform {
     width: 100%;
