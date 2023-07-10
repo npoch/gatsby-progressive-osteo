@@ -76,9 +76,7 @@ module.exports = {
       description: `Discover the Future of Osteopathy.`,
       lang: `en`,
       display: `standalone`,
-      icon: 'src/images/favicon.png',
       start_url: `/`,
-      theme_color: 'false',
     },
   },
   {
