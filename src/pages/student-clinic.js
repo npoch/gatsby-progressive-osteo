@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import styled from 'styled-components';

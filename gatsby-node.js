@@ -19,7 +19,9 @@ async function turnInstructorsIntoPages({ graphql, actions }) {
   `);
   // 3. Loop over each instructor and create a page for that person
   // console.log(data.instructors.nodes);
+  // console.log(data.instructors.nodes);
   data.instructors.nodes.forEach((instructor) => {
+    console.log(`Making page for ${instructor.name}`);
     console.log(`Making page for ${instructor.name}`);
     actions.createPage({
       // What is the URL for this new page??
@@ -176,7 +178,11 @@ exports.createPages = async (params) => {
     // Events
     turnEventsIntoPages(params),
     
+    turnEventsIntoPages(params),
+    
     // Announcements
+    turnAnnouncementsIntoPages(params),
+
     turnAnnouncementsIntoPages(params),
 
   ]);
