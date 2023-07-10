@@ -75,6 +75,7 @@ module.exports = {
       short_name: `OAoPO`,
       description: `Discover the Future of Osteopathy.`,
       lang: `en`,
+      icon: "./src/images/logo.svg",
       display: `standalone`,
       start_url: `/`,
     },
