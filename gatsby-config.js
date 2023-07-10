@@ -95,15 +95,25 @@ module.exports = {
       mergeStyleHashes: false, // you can disable styles sha256 hashes
       mergeDefaultDirectives: true,
       directives: {
-        "script-src-elem": "'self' www.googletagmanager.com/gtm.js?id=GTM-WXFN77V&l=ceDataLayer",
-        "font-src": "'self' fonts.googleapis.com",
-        // "style-src-elem": "fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap *"
-        "script-src": "'self' 'unsafe-inline' 'wasm-unsafe-eval' 'inline-speculation-rules' www.google-analytics.com www.googletagmanager.com docs.google.com/forms",
-        "style-src": "'self' 'unsafe-inline' www.googletagmanager.com docs.google.com/forms fonts.googleapis.com",
-        "img-src": "'self' 'unsafe-inline' data: www.google-analytics.com www.googletagmanager.com docs.google.com/forms fonts.googleapis.com cdn.sanity.io ytimg.com youtube.com ",
-        "connect-src": "'self' msr25ovq.api.sanity.io/v1/graphql/production/default www.google-analytics.com",
-        "media-src": "'self' 'unsafe-inline' data: youtube",
-        "frame-src": "'self' 'unsafe-inline' youtube docs.google.com/forms",
+        "default-src":"* 'unsafe-inline'",
+        "script-src":"* 'unsafe-inline'",
+        "style-src":"* 'unsafe-inline'",
+        "object-src":"* 'unsafe-inline'",
+        "img-src":"* 'unsafe-inline'",
+        "media-src":"* 'unsafe-inline'",
+        "frame-src":"* 'unsafe-inline'",
+        "font-src":"* 'unsafe-inline'",
+        "connect-src":"* 'unsafe-inline'",
+
+        // "script-src-elem": "'self' www.googletagmanager.com/gtm.js?id=GTM-WXFN77V&l=ceDataLayer",
+        // "font-src": "'self' fonts.googleapis.com",
+        // // "style-src-elem": "fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap *"
+        // "script-src": "'self' 'unsafe-inline' 'wasm-unsafe-eval' 'inline-speculation-rules' www.google-analytics.com www.googletagmanager.com docs.google.com/forms",
+        // "style-src": "'self' 'unsafe-inline' www.googletagmanager.com docs.google.com/forms fonts.googleapis.com",
+        // "img-src": "'self' 'unsafe-inline' data: www.google-analytics.com www.googletagmanager.com docs.google.com/forms fonts.googleapis.com cdn.sanity.io ytimg.com youtube.com ",
+        // "connect-src": "'self' msr25ovq.api.sanity.io/v1/graphql/production/default www.google-analytics.com",
+        // "media-src": "'self' 'unsafe-inline' data: youtube",
+        // "frame-src": "'self' 'unsafe-inline' youtube docs.google.com/forms",
         // you can add your directives or override defaults
       }
     }
