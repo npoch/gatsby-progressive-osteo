@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
 import InstructorCard from '../components/Instructor';
 import styled from 'styled-components';
