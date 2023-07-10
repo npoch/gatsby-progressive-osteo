@@ -19,9 +19,7 @@ async function turnInstructorsIntoPages({ graphql, actions }) {
   `);
   // 3. Loop over each instructor and create a page for that person
   // console.log(data.instructors.nodes);
-  // console.log(data.instructors.nodes);
   data.instructors.nodes.forEach((instructor) => {
-    console.log(`Making page for ${instructor.name}`);
     console.log(`Making page for ${instructor.name}`);
     actions.createPage({
       // What is the URL for this new page??
@@ -84,8 +82,9 @@ async function turnFaqsIntoPages({ graphql, actions }) {
     }
     `)
   // 3. Loop over each FAQ and create a page for that FAQ
-  console.log(data.faqs.nodes);
+  // console.log(data.faqs.nodes);
   data.faqs.nodes.forEach((faq) => {
+    console.log(`Making page for ${faq.title}`);
     actions.createPage({
       // What is the URL for this new page?
       path: `faq/${faq.slug.current}`,
@@ -96,7 +95,7 @@ async function turnFaqsIntoPages({ graphql, actions }) {
     })
   })
 }
-      
+
 async function turnEventsIntoPages({ graphql, actions }) {
   // 1. Get template for Instructor
   const eventTemplate = path.resolve('./src/templates/Event.js');
@@ -178,11 +177,8 @@ exports.createPages = async (params) => {
     // Events
     turnEventsIntoPages(params),
     
-    turnEventsIntoPages(params),
     
     // Announcements
-    turnAnnouncementsIntoPages(params),
-
     turnAnnouncementsIntoPages(params),
 
   ]);
