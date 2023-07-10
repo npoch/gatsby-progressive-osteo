@@ -97,10 +97,11 @@ module.exports = {
       directives: {
         "script-src": "'self' 'unsafe-inline' 'wasm-unsafe-eval' 'inline-speculation-rules' www.google-analytics.com www.googletagmanager.com docs.google.com/forms",
         "style-src": "'self' 'unsafe-inline' www.googletagmanager.com docs.google.com/forms fonts.googleapis.com",
-        "img-src": "'self' data: www.google-analytics.com www.googletagmanager.com docs.google.com/forms fonts.googleapis.com cdn.sanity.io 'unsafe-inline'",
+        "img-src": "'self' data: www.google-analytics.com www.googletagmanager.com docs.google.com/forms fonts.googleapis.com cdn.sanity.io 'unsafe-inline' ytimg.com youtube.com ",
         "script-src-elem": "'self' 'unsafe-inline' www.googletagmanager.com",
         "connect-src": "'self' msr25ovq.api.sanity.io/v1/graphql/production/default www.google-analytics.com",
-        "media-src": "'self' 'unsafe-inline' data:"
+        "media-src": "'self' 'unsafe-inline' data: *youtube*",
+        "frame-src": "'self' 'unsafe-inline' *youtube* docs.google.com/forms",
         // "style-src-elem": "fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap *"
         // you can add your directives or override defaults
       }
