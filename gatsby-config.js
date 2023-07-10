@@ -95,15 +95,15 @@ module.exports = {
       mergeStyleHashes: false, // you can disable styles sha256 hashes
       mergeDefaultDirectives: true,
       directives: {
-        "default-src": "* 'unsafe-inline'",
-        "script-src": "* 'unsafe-inline'",
+        "default-src": "'self' * 'unsafe-inline'",
+        "script-src": "'self' * 'unsafe-inline'",
         "style-src": "'self' * 'unsafe-inline'",
-        "object-src": "* 'unsafe-inline'",
-        "img-src": "'self' *.sanity.io *.ytimg.com youtube.com",
-        "media-src": "* 'unsafe-inline'",
-        "frame-src": "* 'unsafe-inline'",
-        "font-src": "* 'unsafe-inline'",
-        "connect-src": "* 'unsafe-inline'",
+        "object-src": "'self' * 'unsafe-inline'",
+        "img-src": "'self' data: blob: *.sanity.io *.ytimg.com youtube.com",
+        "media-src": "'self' * 'unsafe-inline'",
+        "frame-src": "'self' * 'unsafe-inline'",
+        "font-src": "'self' * 'unsafe-inline' data: blob:",
+        "connect-src": "'self' * 'unsafe-inline'",
 
         // "script-src-elem": "'self' www.googletagmanager.com/gtm.js?id=GTM-WXFN77V&l=ceDataLayer",
         // "font-src": "'self' fonts.googleapis.com",
