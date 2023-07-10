@@ -96,9 +96,9 @@ module.exports = {
       mergeStyleHashes: false, // you can disable styles sha256 hashes
       mergeDefaultDirectives: true,
       directives: {
-        "script-src": "'self' www.google-analytics.com www.googletagmanager.com",
+        "script-src": "'self' www.google-analytics.com www.googletagmanager.com docs.google.com/forms unsafe-inline",
         "style-src": "'self' 'unsafe-inline'",
-        "img-src": "'self' data: www.google-analytics.com www.googletagmanager.com"
+        "img-src": "'self' data: www.google-analytics.com www.googletagmanager.com docs.google.com/forms fonts.googleapis.com"
         // you can add your directives or override defaults
       }
     }
