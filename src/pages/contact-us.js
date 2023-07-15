@@ -8,6 +8,7 @@ const ContactUsStyles = styled.div`
 `;
 
 export default function ContactUsPage(){
+
   return <>
   <Seo title={'Contact Us'} description={'Still have questions? Send us a message.'}></Seo>
   <ContactUsStyles>

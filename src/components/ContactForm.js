@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import useForm from '../utils/useForm';
 
 const ContactFormStyles = styled.form`
   border: 1px solid grey;
@@ -43,37 +44,98 @@ const ContactFormStyles = styled.form`
 `;
 
 export default function ContactForm() {
+  const { values, updateValue } = useForm({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+
+  async function handleSubmit(e) {
+    console.log('FORM SUBMITTED');
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    
+    // gather all the data
+    const body = {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    };
+    // 4. Send this data the a serevrless function when they check out
+    const res = await fetch(`/`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(body).toString(),
+      }
+    );
+      console.log(res);
+      console.log(res.body);
+      console.log(await res.text());
+    // const text = JSON.parse(await res.text());
+
+    // // check if everything worked
+    // if (res.status >= 400 && res.status < 600) {
+    //   setLoading(false); // turn off loading
+    //   setError(text.message);
+    // } else {
+    //   // it worked!
+    //   setLoading(false);
+    //   setMessage('Your message has been sent. We will get back to you shortly.');
+    // }
+  }
+  
+  if(loading) {
+    return <p>Loading...</p>
+  }
+  if(message){
+    return <p>{message}</p>
+  }
+  if(error){
+    return <>
+    <p>{error}</p>
+    <p>Please try calling us at: +1(647)770-2967</p>
+    </>
+  }
+
   return <ContactFormStyles 
   name="contact" 
   method="POST" 
   netlify-honeypot="bot-field" 
   data-netlify="true"
-  action="/thank-you/" //Add a thank you page of some sort.
+  onSubmit={handleSubmit}
+  action="#" //Add a thank you page of some sort.
   >
-    <p class="hidden">
-    <label>
+    <p className="hidden">
+    <label htmlFor="bot-field">
       Don’t fill this out if you’re human: <input name="bot-field" />
     </label>
   </p>
   <fieldset>
     <p>
-      <label>
-        Name: <input type="text" name="name" />
+      <label htmlFor="name">
+        Name: <input type="text" name="name" id="name" value={values.name} onChange={updateValue} />
       </label>
     </p>
     <p>
-      <label>
-        Email: <input type="email" name="email" />
+      <label htmlFor="email">
+        Email: <input type="email" name="email" id="email" value={values.email} onChange={updateValue} />
       </label>
     </p>
   </fieldset>
   <p>
-    <label>
-      Message: <textarea name="message"></textarea>
+    <label htmlFor="message">
+      Message: <textarea type="textarea" name="message" id="message" value={values.message} onChange={updateValue}></textarea>
     </label>
   </p>
   <p>
-    <button type="submit">Send</button>
+    <button type="submit" id="submit">Send</button>
   </p>
 </ContactFormStyles>
 }
