@@ -81,14 +81,15 @@ export default function ContactForm() {
     // const text = JSON.parse(await res.text());
 
     // // check if everything worked
-    // if (res.status >= 400 && res.status < 600) {
-    //   setLoading(false); // turn off loading
-    //   setError(text.message);
-    // } else {
-    //   // it worked!
-    //   setLoading(false);
-    //   setMessage('Your message has been sent. We will get back to you shortly.');
-    // }
+    if (res.status >= 400 && res.status < 600) {
+      setLoading(false); // turn off loading
+      setError(text.message);
+    } else {
+      // it worked!
+      setLoading(false);
+      setMessage('Your message has been sent. We will get back to you shortly.');
+      navigate("/thank-you/")
+    }
   }
   
   if(loading) {
@@ -113,6 +114,7 @@ export default function ContactForm() {
   action="#" //Add a thank you page of some sort.
   >
     <p className="hidden">
+    <input type="hidden" name="form-name" value="contact" />
     <label htmlFor="bot-field">
       Don’t fill this out if you’re human: <input name="bot-field" />
     </label>
