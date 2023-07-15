@@ -43,7 +43,13 @@ const ContactFormStyles = styled.form`
 `;
 
 export default function ContactForm() {
-  return <ContactFormStyles name="contact" method="POST" netlify-honeypot="bot-field" netlify>
+  return <ContactFormStyles 
+  name="contact" 
+  method="POST" 
+  netlify-honeypot="bot-field" 
+  data-netlify="true"
+  action="/thank-you/" //Add a thank you page of some sort.
+  >
     <p class="hidden">
     <label>
       Don’t fill this out if you’re human: <input name="bot-field" />
