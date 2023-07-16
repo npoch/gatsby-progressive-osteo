@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function useForm(defaults) {
   const [values, setValues] = useState(defaults);
-  console.log(values);
+  // console.log(values);
   function updateValue(e) {
     // check if its a number and convert
     let { value } = e.target;
