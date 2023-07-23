@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import ClinicGrid from '../components/ClinicGrid';
@@ -33,43 +33,42 @@ const StudentClinicStyles = styled.div`
 export default function StudentClinicPage({data}){
   //(sort: [{year: ASC}, {month: {month: ASC}}, {month: {datecouple:{dateString: ASC}}}])
   const content = data.page._rawContent;
-  const dates = [
-    {
-      "year": "2023",
-      "months": [
-        {
-          "month": "07",
-          "datecouple": [
-            {
-              "dateString": "2023-07-13",
-              "start": "2023-07-09T19:30:07.705Z",
-              "end": "2023-07-14T00:00:00.000Z"
-            },
-            {
-              "dateString": "2023-07-27",
-              "start": "2023-07-27T19:30:00.000Z",
-              "end": "2023-07-28T00:00:00.000Z"
+  const [getClinic, setClinic] = useState([]);
+
+  useEffect(() => {
+    fetch('https://msr25ovq.api.sanity.io/v1/graphql/production/default', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        query: `
+        query{
+          clinicDates: allClinic(
+            sort: {year: ASC}
+          ){
+            year
+            months {
+              month
+              datecouple {
+                dateString
+                start
+                end
+              }
             }
-          ]
-        },
-        {
-          "month": "08",
-          "datecouple": [
-            {
-              "dateString": "2023-08-17",
-              "start": "2023-08-17T19:00:00.000Z",
-              "end": "2023-08-18T00:00:00.000Z"
-            },
-            {
-              "dateString": "2023-08-31",
-              "start": "2023-08-31T19:30:00.000Z",
-              "end": "2023-09-01T00:00:00.000Z"
-            }
-          ]
         }
-      ]
-    }
-  ];
+        }`
+      })
+    })
+    .then((res) => res.json())
+    .then((result) => {
+      // check for errors 
+      // console.log("ALL CLINIC: ", result);
+      setClinic(result.data.clinicDates);
+    })
+  }, []);
+
+  const dates = getClinic;
 
   return <>
     <Seo title={'Student Clinic Information'} description={'Get treated by dedicated trainees at our student clinic.'}></Seo>
@@ -84,43 +83,43 @@ export default function StudentClinicPage({data}){
 }
 
 export const query = graphql`
-  query ClinicPageQuery {
-    page: sanityPage(slug: {current: {eq: "student-clinic"}}) {
-    id
-    name
-    slug {
-      current
-    }
-    links {
-      _key
-        _type
-        name
-        link
-    }
-    images {
-      asset {
-        gatsbyImageData(
-          fit: FILLMAX
-          layout: FULL_WIDTH
-          width: 500
-          placeholder: BLURRED
-        )
-      }
-    }
-    _rawContent(resolveReferences: {maxDepth: 10})
+query ClinicPageQuery {
+  page: sanityPage(slug: {current: {eq: "student-clinic"}}) {
+  id
+  name
+  slug {
+    current
   }
-  # dates: allSanityClinic{
-  #   nodes {
-  #     year
-  #     months {
-  #       month
-  #       datecouple {
-  #         dateString
-  #         start
-  #         end
-  #       }
-  #     }
-  #   }
-  # }
+  links {
+    _key
+      _type
+      name
+      link
+  }
+  images {
+    asset {
+      gatsbyImageData(
+        fit: FILLMAX
+        layout: FULL_WIDTH
+        width: 500
+        placeholder: BLURRED
+      )
+    }
+  }
+  _rawContent(resolveReferences: {maxDepth: 10})
+  }
+    # dates: allSanityClinic{
+    #   nodes {
+    #     year
+    #     months {
+    #       month
+    #       datecouple {
+    #         dateString
+    #         start
+    #         end
+    #       }
+    #     }
+    #   }
+    # }
 }
 `;
