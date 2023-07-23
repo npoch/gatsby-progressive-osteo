@@ -16,7 +16,7 @@ const ClinicMonthStyles = styled.div`
 
 
 export default function ClinicMonth({data}){
-  console.log("clinic month", data)
+  // console.log("clinic month", data)
   function getMonthName(monthNumber) {
     const date = new Date();
     date.setMonth(monthNumber - 1);
