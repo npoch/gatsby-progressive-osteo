@@ -61,7 +61,7 @@ const NavbarStyles = styled.nav`
       }
     }
   }
-  @media (max-width: 600px) {
+  @media (min-width: 600px) {
     display: none;
   }
 `;
@@ -90,14 +90,14 @@ export default function Navbar(){
         <li className='menu-item'>
           <Link to='/'>Home</Link>
         </li>
-        <li className='menu-item'>
+        {/* <li className='menu-item'>
           <Link to='/blog'>Blog</Link>
-        </li>
-        <li className='menu-item'>
+        </li> */}
+        {/* <li className='menu-item'>
           <Link to='/apply'>Apply Today!</Link>
-        </li>
+        </li> */}
         <li className='menu-item'>
-          <Link to='#' onClick={() => {document.getElementById('sidebar-dt').classList.add('active')}}>Menu</Link>
+          <Link to='#' onClick={() => {document.getElementById('sidebar-mb').classList.add('active')}}>Menu</Link>
         </li>
       </ul>
     </div>

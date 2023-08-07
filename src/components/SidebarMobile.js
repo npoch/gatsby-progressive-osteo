@@ -8,21 +8,40 @@ const SidebarStyles = styled.section`
   border: 1px solid lightgrey;
   height: 100dvh;
   top: 0;
+  width: 100%;
+  display: none;
   right: -150%;
-  transition: right 400ms ease-in-out;
+  opacity: 0%;
+  transition: all 400ms ease-in-out;
   z-index: 1000;
   .close{
     font-weight: bold;
     position: fixed;
-    right: -150%;
+    right: 5%;
     margin: 5px 12px 12px;
-    transition: right 200ms 400ms ease-in, right 300ms ease-out;
+    opacity: 0%;
+    transition: all 200ms 400ms ease-in, all 300ms ease-out;
   }
   .menu-container {
     margin-top:  60px;
     list-style-type: none;
     width: fit-content;
     /* border: 1px red solid; */
+
+    .menu-item.single {
+      /* padding: 10px; */
+      height: fit-content;
+      display: block;
+      background: var(--grey);
+      color: var(--black);
+      border: 1px rgb(118, 118, 118) solid;
+      border-radius: 2px;
+      /* width: 100%; */
+      padding: 12px;
+      margin: 5px;
+      margin-right: 15px;
+      text-align: center;
+    }
     .dropdown{
 
       margin-right: 20px;
@@ -59,12 +78,16 @@ const SidebarStyles = styled.section`
     }
   }
   &.active {
+    display: block;
+    opacity: 1;
     right: 0;
     .close {
+      display: block;
+      opacity: 1;
       right: 0;
     }
   }
-  @media (max-width: 600px){
+  @media (min-width: 600px) {
     display: none;
   }
 `;
@@ -82,15 +105,21 @@ export default function Sidebar() {
     button.nextSibling.classList.toggle('menu-open');
   }
   function close(){
-    document.getElementById('sidebar-dt').classList.remove('active');
+    document.getElementById('sidebar-mb').classList.remove('active');
     if(document.querySelectorAll('.menu-container .dropdown-menu.menu-open').length < 1) return;
     document.querySelectorAll('.menu-container .dropdown-menu.menu-open').forEach(item => {
       item.classList.remove('menu-open');
     })
   }
-  return <SidebarStyles id="sidebar-dt" className='sidebar'>
+  return <SidebarStyles id="sidebar-mb" className='sidebar'>
     <button className="close" onClick={close}>&times;</button>
     <ul className='menu-container'>
+      <li className='menu-item link single'>
+        <Link onClick={close} to='/apply'>Apply Today!</Link>
+      </li>
+      <li className='menu-item link single'>
+        <Link onClick={close} to='/blog'>Blog</Link>
+      </li>
     <li className='dropdown' data-dropdown>
           <button className='menu-item link' onClick={slideToggle} data-dropdown-button>About Us</button>
           <ul className='dropdown-menu'>

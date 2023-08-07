@@ -4,9 +4,11 @@ import GlobalStyles from "../styles/GlobalStyles"
 import Typography from "../styles/Typography"
 import Footer from "./Footer"
 import Navbar from "./Navbar"
+import NavbarMobile from "./NavbarMobile"
 import styled from "styled-components"
 import { Helmet } from "react-helmet"
 import Sidebar from "./Sidebar"
+import SidebarMobile from "./SidebarMobile"
 
 const LayoutStyles = styled.div`
   display: grid;
@@ -16,7 +18,7 @@ const LayoutStyles = styled.div`
 `;
 
 const SiteContainerStyles = styled.div`
-  max-width: 1000px;
+  max-width: 1250px;
   width: 90%;
   margin: 4rem auto;
   padding: 5px;
@@ -38,9 +40,11 @@ export default function Layout({ children }) {
     <GlobalStyles />
     <Typography />
     <LayoutStyles>
-    <Navbar />
+      <Navbar />
+      <NavbarMobile />
     <SiteContainerStyles>
     <Sidebar />
+    <SidebarMobile />
       <main id="main" className='main-content'>
         {children}
       </main>
