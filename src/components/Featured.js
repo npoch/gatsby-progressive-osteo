@@ -40,14 +40,14 @@ export default function Featured(props) {
           page="/announcements-events"
           data={announcements}
         />
-        {/* <FeatureCard
+        <FeatureCard
           title="Experience our unique curriculum for yourself"
           block="events"
           src={images.ie}
           cta="Open house schedule"
           page="/announcements-events"
           data={events}
-        /> */}
+        />
         <FeatureCard
           title="Get treated by dedicated trainees at our student clinic"
           block="clinic"
