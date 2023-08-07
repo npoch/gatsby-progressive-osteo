@@ -61,6 +61,9 @@ const NavbarStyles = styled.nav`
       }
     }
   }
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 
@@ -94,7 +97,7 @@ export default function Navbar(){
           <Link to='/apply'>Apply Today!</Link>
         </li>
         <li className='menu-item'>
-          <Link to='#' onClick={() => {document.getElementById('sidebar').classList.add('active')}}>Menu</Link>
+          <Link to='#' onClick={() => {document.getElementById('sidebar-dt').classList.add('active')}}>Menu</Link>
         </li>
       </ul>
     </div>

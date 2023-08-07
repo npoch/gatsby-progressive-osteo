@@ -96,16 +96,15 @@ module.exports = {
       mergeDefaultDirectives: true,
       directives: {
         "default-src": "'self' * 'unsafe-inline'",
-        "script-src": "'self' * 'unsafe-inline'",
+        "script-src": "'self' * 'unsafe-inline' *.googletagmanager.com",
         "style-src": "'self' * 'unsafe-inline'",
         "object-src": "'self' * 'unsafe-inline'",
-        "img-src": "'self' data: blob: *.sanity.io *.ytimg.com youtube.com",
+        "img-src": "'self' data: blob: *.sanity.io *.ytimg.com youtube.com *.googletagmanager.com",
         "media-src": "'self' * 'unsafe-inline'",
         "frame-src": "'self' * 'unsafe-inline'",
         "font-src": "'self' * 'unsafe-inline' data: blob:",
         "connect-src": "'self' * 'unsafe-inline'",
 
-        // "script-src-elem": "'self' www.googletagmanager.com/gtm.js?id=GTM-WXFN77V&l=ceDataLayer",
         // "font-src": "'self' fonts.googleapis.com",
         // // "style-src-elem": "fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap *"
         // "script-src": "'self' 'unsafe-inline' 'wasm-unsafe-eval' 'inline-speculation-rules' www.google-analytics.com www.googletagmanager.com docs.google.com/forms",

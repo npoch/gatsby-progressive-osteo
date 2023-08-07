@@ -40,10 +40,11 @@ export default function Layout({ children }) {
     <GlobalStyles />
     <Typography />
     <LayoutStyles>
-    {window.screen.availWidth >= 600 ? <Navbar /> : <NavbarMobile />}
-    
+      <Navbar />
+      <NavbarMobile />
     <SiteContainerStyles>
-    {window.screen.availWidth >= 600 ? <Sidebar /> : <SidebarMobile />}
+    <Sidebar />
+    <SidebarMobile />
       <main id="main" className='main-content'>
         {children}
       </main>

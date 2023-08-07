@@ -64,7 +64,9 @@ const SidebarStyles = styled.section`
       right: 0;
     }
   }
-
+  @media (max-width: 600px){
+    display: none;
+  }
 `;
 
 export default function Sidebar() {
@@ -80,13 +82,13 @@ export default function Sidebar() {
     button.nextSibling.classList.toggle('menu-open');
   }
   function close(){
-    document.getElementById('sidebar').classList.remove('active');
+    document.getElementById('sidebar-dt').classList.remove('active');
     if(document.querySelectorAll('.menu-container .dropdown-menu.menu-open').length < 1) return;
     document.querySelectorAll('.menu-container .dropdown-menu.menu-open').forEach(item => {
       item.classList.remove('menu-open');
     })
   }
-  return <SidebarStyles id="sidebar" className='sidebar'>
+  return <SidebarStyles id="sidebar-dt" className='sidebar'>
     <button className="close" onClick={close}>&times;</button>
     <ul className='menu-container'>
     <li className='dropdown' data-dropdown>
