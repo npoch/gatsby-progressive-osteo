@@ -9,6 +9,8 @@ const HeroStyles = styled.div`
     grid-gap: 1em;
     grid-template-columns: repeat(3, 1fr);
     padding: 10rem 0;
+    max-width: 1000px;
+    margin: 0 auto;
     @media (max-width: 991px) {
       grid-template-columns: 1fr;
       justify-items: center;

@@ -55,10 +55,10 @@ const FeatureCardStyles = styled.div`
 
 `;
 
-export default function FeatureCard({ title, block, src, cta, page, data }) {
+export default function FeatureCard({ title, block, src, cta, page, data, defaultText }) {
   // console.log(title, data)
 
-  if(Object.keys(data).length < 1) {
+  if(data == null || Object.keys(data).length < 1) {
     return (
       <FeatureCardStyles>
 
@@ -68,7 +68,7 @@ export default function FeatureCard({ title, block, src, cta, page, data }) {
             image={src.image.asset.gatsbyImageData}
           />
           <div className="link-list">
-            <p>new dates coming</p>
+            <p>{defaultText}</p>
           </div>
           <Link to={page} className="button">
             {cta}

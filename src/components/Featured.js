@@ -24,7 +24,7 @@ const FeaturedStyles = styled.div`
 
 export default function Featured(props) {
   const { announcements, clinicDates, events, images} = props;
-  console.log({announcements, clinicDates, events, images});
+  // console.log({announcements, clinicDates, events, images});
   return (
     <FeaturedStyles>
       <section className="description">
@@ -39,7 +39,8 @@ export default function Featured(props) {
           cta="Find out more"
           page="/announcements-events"
           data={announcements}
-        />
+          defaultText="Check back soon for announcements"
+          />
         <FeatureCard
           title="Experience our unique curriculum for yourself"
           block="events"
@@ -47,7 +48,8 @@ export default function Featured(props) {
           cta="Open house schedule"
           page="/announcements-events"
           data={events}
-        />
+          defaultText="Check back soon for new events"
+          />
         <FeatureCard
           title="Get treated by dedicated trainees at our student clinic"
           block="clinic"
@@ -55,6 +57,7 @@ export default function Featured(props) {
           cta="Book now"
           page="/student-clinic"
           data={clinicDates}
+          defaultText="Check back soon for new dates"
         />
       </div>
     </FeaturedStyles>
