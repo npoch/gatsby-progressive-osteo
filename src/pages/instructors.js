@@ -21,7 +21,7 @@ export default function InstructorsPage({data}) {
     <h1>Instructors:</h1>
     <div className='instructors-container'>
       {instructors.map((instructor) => {
-        return <InstructorCard key={instructor.id} instructor={instructor} />
+        return <InstructorCard key={instructor.id} instructor={instructor} group='instructor' />
       })}
     </div>
   </InstructorGridStyles>

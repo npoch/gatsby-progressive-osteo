@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import styled from 'styled-components';
 import ClinicGrid from '../components/ClinicGrid';
@@ -33,43 +33,43 @@ const StudentClinicStyles = styled.div`
 export default function StudentClinicPage({data}){
   //(sort: [{year: ASC}, {month: {month: ASC}}, {month: {datecouple:{dateString: ASC}}}])
   const content = data.page._rawContent;
-  const [getClinic, setClinic] = useState([]);
+  // const [getClinic, setClinic] = useState([]);
 
-  useEffect(() => {
-    fetch('https://msr25ovq.api.sanity.io/v1/graphql/production/default', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        query: `
-        query{
-          clinicDates: allClinic(
-            sort: {year: ASC}
-          ){
-            year
-            months {
-              month
-              datecouple {
-                dateString
-                start
-                end
-              }
-            }
-        }
-        }`
-      })
-    })
-    .then((res) => res.json())
-    .then((result) => {
-      // check for errors 
-      // console.log("ALL CLINIC: ", result);
-      setClinic(result.data.clinicDates);
-    })
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://msr25ovq.api.sanity.io/v1/graphql/production/default', {
+  //     method: "POST",
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       query: `
+  //       query{
+  //         clinicDates: allClinic(
+  //           sort: {year: ASC}
+  //         ){
+  //           year
+  //           months {
+  //             month
+  //             datecouple {
+  //               dateString
+  //               start
+  //               end
+  //             }
+  //           }
+  //       }
+  //       }`
+  //     })
+  //   })
+  //   .then((res) => res.json())
+  //   .then((result) => {
+  //     // check for errors 
+  //     // console.log("ALL CLINIC: ", result);
+  //     setClinic(result.data.clinicDates);
+  //   })
+  // }, []);
 
-  const dates = getClinic;
-
+  const dates = data.dates.nodes;
+  // console.log("PAGEQUESRY: ", dates)
   return <>
     <Seo title={'Student Clinic Information'} description={'Get treated by dedicated trainees at our student clinic.'}></Seo>
     <StudentClinicStyles>
@@ -108,18 +108,18 @@ query ClinicPageQuery {
   }
   _rawContent(resolveReferences: {maxDepth: 10})
   }
-    # dates: allSanityClinic{
-    #   nodes {
-    #     year
-    #     months {
-    #       month
-    #       datecouple {
-    #         dateString
-    #         start
-    #         end
-    #       }
-    #     }
-    #   }
-    # }
+    dates: allSanityClinic{
+      nodes {
+        year
+        months {
+          month
+          datecouple {
+            dateString
+            start
+            end
+          }
+        }
+      }
+    }
 }
 `;

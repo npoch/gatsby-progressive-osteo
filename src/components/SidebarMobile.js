@@ -154,6 +154,9 @@ export default function Sidebar() {
             <li className='menu-item'>
               <Link to="/student-clinic" onClick={close}>Information</Link>
             </li>
+            <li className='menu-item'>
+              <Link to="/clinic-supervisors" onClick={close}>Clinic Supervisors</Link>
+            </li>
             {/* <li className='menu-item'>
               <Link to="/#" onClick={close}>Book Appointment</Link>
             </li> */}

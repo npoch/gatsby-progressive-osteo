@@ -33,15 +33,16 @@ const InstructorStyles = styled.div`
   }
 `;
 
-export default function InstructorCard({instructor, group}) {
+export default function PersonCard({person, group}) {
   const groupSlug = group;
-  // console.log(instructor)
+  console.log(person);
+
   return <InstructorStyles>
-  <h2 className='i-name'>{instructor.name}</h2>
-  <GatsbyImage image={instructor.image.asset.gatsbyImageData} alt={instructor.name}/>
-  <p className='i-title'>{instructor.title}</p>
-  <p className='i-creds'>{instructor.credentials}</p>
-  <Link to={`/${groupSlug}/${instructor.slug.current}`}>
+  <h2 className='i-name'>{person.name}</h2>
+  <GatsbyImage image={person.image.asset.gatsbyImageData} alt={person.name}/>
+  <p className='i-title'>{person.title}</p>
+  <p className='i-creds'>{person.credentials}</p>
+  <Link to={`/${groupSlug}/${person.slug.current}`}>
     Read Details
   </Link>
 </InstructorStyles>
