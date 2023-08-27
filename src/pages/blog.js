@@ -33,7 +33,19 @@ export const BlogPostsQuery = graphql`
       id
       title
       author {
-        name
+        ... on SanityAuthor {
+          authors {
+            name
+          }
+        }
+        ... on SanityCSupervisor {
+          supervisors {
+            name
+          }
+        }
+        ... on SanityInstructor {
+          name
+        }
       }
       slug {
         current

@@ -50,11 +50,35 @@ export const query = graphql`
     id
     _rawContent(resolveReferences: {maxDepth: 10})
     author {
-      title
-      name
-      image {
-        asset {
-          gatsbyImageData(fit: FILLMAX)
+      ... on SanityAuthor {
+        authors {
+          name
+          title
+          image {
+            asset {
+              gatsbyImageData(fit: FILLMAX)
+            }
+          }
+        }
+      }
+      ... on SanityCSupervisor {
+        supervisors {
+          name
+          title
+          image {
+            asset {
+              gatsbyImageData(fit: FILLMAX)
+            }
+          }
+        }
+      }
+      ... on SanityInstructor {
+        title
+        name
+        image {
+          asset {
+            gatsbyImageData(fit: FILLMAX)
+          }
         }
       }
     }

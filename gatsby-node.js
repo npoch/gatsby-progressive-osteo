@@ -32,6 +32,81 @@ async function turnInstructorsIntoPages({ graphql, actions }) {
   });
 }
 
+async function turnSupervisorsIntoPages({ graphql, actions }) {
+  // 1. Get template for Instructor
+  const bioTemplate = path.resolve('./src/templates/Bio.js');
+
+  // 2. Get all instructors from Sanity API
+  const { data } = await graphql(`
+    query {
+      Csupervisors: allSanityCSupervisor {
+        nodes {
+          supervisors {
+            name
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+  // 3. Loop over each instructor and create a page for that person
+  // console.log("##########");
+  // console.log("##########");
+  // console.log("##########");
+  // console.log(JSON.stringify(data.Csupervisors,null,2));
+  // console.log("##########");
+  // console.log("##########");
+  // console.log("##########");
+  data.Csupervisors.nodes[0].supervisors.forEach((supervisor) => {
+    console.log(`Making page for ${supervisor.name}`);
+    actions.createPage({
+      // What is the URL for this new page??
+      path: `clinic-supervisor/${supervisor.slug.current}`,
+      component: bioTemplate,
+      context: {
+        slug: supervisor.slug.current,
+      },
+    })
+  });
+}
+async function turnAuthorsIntoPages({ graphql, actions }) {
+  // 1. Get template for Instructor
+  const bioTemplate = path.resolve('./src/templates/Bio.js');
+
+  // 2. Get all instructors from Sanity API
+  const { data } = await graphql(`
+    query {
+      authors: allSanityAuthor {
+        nodes {
+          authors {
+            name
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+  // 3. Loop over each instructor and create a page for that person
+  // console.log("##########");
+  // console.log(JSON.stringify(data.Csupervisors,null,2));
+  // console.log("##########");
+  data.authors.nodes[0].authors.forEach((author) => {
+    console.log(`Making page for ${author.name}`);
+    actions.createPage({
+      // What is the URL for this new page??
+      path: `author/${author.slug.current}`,
+      component: bioTemplate,
+      context: {
+        slug: author.slug.current,
+      },
+    })
+  });
+}
+
 async function turnPostsIntoPages({ graphql, actions }) {
   // 1. Get template for Instructor
   const postTemplate = path.resolve('./src/templates/Post.js');
@@ -114,7 +189,7 @@ async function turnEventsIntoPages({ graphql, actions }) {
     }
   `);
   // 3. Loop over each instructor and create a page for that person
-  console.log('events', JSON.stringify(data.events.nodes, null, 2));
+  // console.log('events', JSON.stringify(data.events.nodes, null, 2));
   data.events.nodes.forEach((event) => {
     console.log(`Making page for ${event.title}`);
     actions.createPage({
@@ -167,9 +242,12 @@ exports.createPages = async (params) => {
   await Promise.all([
     // Instructors
     turnInstructorsIntoPages(params),
-
+    
+    turnSupervisorsIntoPages(params),
     // Posts
     turnPostsIntoPages(params),
+
+    turnAuthorsIntoPages(params),
 
     // FAQs
     turnFaqsIntoPages(params),
