@@ -23,6 +23,7 @@ module.exports = {
       "dataset": "production"
     }
   },
+  "gatsby-plugin-netlify",
   "gatsby-plugin-image",
   {
     resolve: "gatsby-plugin-sharp",

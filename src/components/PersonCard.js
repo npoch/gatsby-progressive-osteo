@@ -35,7 +35,7 @@ const InstructorStyles = styled.div`
 
 export default function PersonCard({person, group}) {
   const groupSlug = group;
-  console.log(person);
+  // console.log(person);
 
   return <InstructorStyles>
   <h2 className='i-name'>{person.name}</h2>

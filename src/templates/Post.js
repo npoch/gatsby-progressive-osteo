@@ -30,7 +30,7 @@ const SinglePostStyles = styled.div`
 
 export default function SinglePost({data}){
   const post = data.post;
-  console.log(post)
+  // console.log(post)
   const description = post.excerpt;
   // console.log(post)
   return <>
