@@ -24,7 +24,7 @@ const FeaturedStyles = styled.div`
 
 export default function Featured(props) {
   const { announcements, clinicDates, events, images} = props;
-  // console.log({announcements, clinicDates, events, images});
+  console.log({announcements, clinicDates, events, images});
   return (
     <FeaturedStyles>
       <section className="description">

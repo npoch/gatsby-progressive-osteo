@@ -213,13 +213,13 @@ export default function Footer(){
       <h4 className='column-title'>Follow</h4>
         <div className="social-link-list">
           <a className="fb-link social-link" href="https://www.facebook.com/ProgressiveOsteopathy/" rel="noopener">
-            <BsFacebook />
+            <BsFacebook role='button' aria-label="Facebook" />
           </a>
           <a className="ig-link social-link" href="https://www.instagram.com/progressiveosteopathy/" rel="noopener">
-            <BsInstagram />
+            <BsInstagram role='button' aria-label="Instagram" />
           </a>
           <a className="in-link social-link" href="https://www.linkedin.com/company/progressiveosteopathy/" rel="noopener">
-            <BsLinkedin />
+            <BsLinkedin role='button' aria-label="LinkedIn" />
           </a>
         </div>
       </div>
