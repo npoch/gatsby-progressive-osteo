@@ -50,7 +50,7 @@ export default function useLatestData() {
     .then((res) => res.json())
     .then((result) => {
       // check for errors 
-      console.log("secondary: ", result);
+      // console.log("secondary: ", result);
       setClinicDates(result.data.allDatecoupling);
       setAnnouncements(result.data.allSchoolSettings[0].announcements);
       setEvents(result.data.allSchoolSettings[0].events);

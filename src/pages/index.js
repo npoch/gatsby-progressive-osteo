@@ -8,7 +8,7 @@ import Seo from '../components/Seo';
 export default function IndexPage({ data }) {
   const today = new Date().toISOString().split('T')[0];
   const { announcements, clinicDates, events} = useLatestData(today);
-  console.log({clinicDates});
+  // console.log({clinicDates});
   const { logo, announceLogo, eventLogo, clinicLogo } = data;
 
   return (

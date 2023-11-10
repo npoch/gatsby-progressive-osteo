@@ -29,7 +29,7 @@ const BlogCardStyles = styled.div`
 `;
 
 export default function BlogCard({data}){
-  console.log(data);
+  // console.log(data);
   // const post = data.post;
   return <BlogCardStyles>
     <Link to={`${data.slug.current}`}>
